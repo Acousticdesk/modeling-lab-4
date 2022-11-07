@@ -17,19 +17,20 @@ const K = 1;
 const numIterations = 100
 
 // UAH
-const initialPrice = 10;
+const initialPrice = 100;
 const prices = [initialPrice];
 
 // Demand
 // x: price
 // t: iteration
 function D(t) {
-  return A - (B * Math.pow(prices[prices.length - 2], 2)) + getExponentialRandomForDeviation(t)
+  return A - (B * Math.pow((prices[t]), 2)) + getExponentialRandomForDeviation(t)
 }
 
 // Supply
 function S(t) {
-  const Xp = (prices[prices.length - 2] || 0) - p((prices[prices.length - 2] || 0) - prices[prices.length - 1]);
+  // when t = 0 we still don't have the t - 1 price, let's assume it is 0
+  const Xp = (prices[t - 1] || 0) - p * ((prices[t - 1] || 0) - prices[t]);
   return C + K * Xp + getExponentialRandomForDeviation(t)
 }
 
@@ -37,15 +38,11 @@ function findNextStepPrice(t) {
   return -((S(t - 1) - A - getExponentialRandomForDeviation(t)) / B)
 }
 
-if (D(0) < S(0)) {
-  throw new Error(`Incorrect initial price set. D(0) > S(0) is required. Instead received D(0) = ${D(0)}, S(0) = ${S(0)}`)
-}
-
 const DResults = [D(0)];
 const SResults = [S(0)];
 
-for (let i = 1; i < numIterations; i += 1) {
+for (let t = 1; t < numIterations; t += 1) {
   prices.push(findNextStepPrice(t));
-  DResults.push(D(i));
-  SResults.push(S(i));
+  DResults.push(D(t));
+  SResults.push(S(t));
 }
