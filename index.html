@@ -6,8 +6,62 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Modeling Lab 4 by Andrii Kicha</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <h2>Lab 4: Microeconomic process modeling</h2>
+        <p>By Andrii Kicha</p>
+
+        <form id="model_input_form">
+            <fieldset>
+                <legend>Model Input</legend>
+                <label>
+                    Iterations
+                    <input type="number" name="num_iterations" value="10">
+                </label>
+                <label>
+                    Initial Price
+                    <input type="number" name="initial_price" value="1000" placeholder="UAH">
+                </label>
+            </fieldset>
+        </form>
+
+        <h3>Model Parameters</h3>
+        <form id="model_parameters_form">
+            <fieldset>
+                <legend>Demand</legend>
+                <label>
+                    A
+                    <input type="number" name="A" value="1">
+                </label>
+                <label>
+                    B
+                    <input type="number" name="B" value="1">
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Supply</legend>
+                <label>
+                    C
+                    <input type="number" name="C" value="1">
+                </label>
+                <label>
+                    K
+                    <input type="number" name="K" value="1">
+                </label>
+            </fieldset>
+        </form>
+
+        <div class="chart__container">
+            <canvas id="chart"></canvas>
+        </div>
+        <div class="price-chart__container">
+            <canvas id="chart_price"></canvas>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
