@@ -1,5 +1,3 @@
-# modeling-lab-4
-
 # Micoreconomic Process Cobweb Model in Javascript
 
 ## Starting a project
