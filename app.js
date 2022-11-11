@@ -40,10 +40,10 @@ function S(t) {
 function findNextStepPrice(t) {
   const { A, B } = parametersData;
   ut[t] = ut[t] || getExponentialRandomForDeviation(t);
-  const nextPrice = -((SResults[t - 1] - A - ut[t]) / B);
+  const nextPriceSquared = -((SResults[t - 1] - A - ut[t]) / B);
 
   // important
-  return nextPrice > 0 ? Math.sqrt(nextPrice) : 0;
+  return nextPriceSquared > 0 ? Math.sqrt(nextPriceSquared) : 0;
 }
 
 function model() {
