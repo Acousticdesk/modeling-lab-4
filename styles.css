@@ -14,3 +14,7 @@ body {
 .price-chart__container, .chart__container {
     margin: 24px 0 0;
 }
+
+.submit__container {
+    margin: 24px 0 0;
+}
